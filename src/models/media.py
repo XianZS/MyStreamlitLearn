@@ -9,6 +9,7 @@
 """
 import streamlit as st
 import os
+from src import api
 
 
 def media_things() -> None:
@@ -19,10 +20,10 @@ def media_things() -> None:
         video:渲染视频
         :return:None
     """
-    image_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/data/static/image/少女.jpg"
-    print(f"ROOT_PATH: {image_path}")
+    image_path = api.get_root_path() + "/data/static/image/少女.jpg"
+    # print(f"ROOT_PATH: {image_path}")
     st.image(image_path)
-    audio_path1 = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/data/static/audio/曼波.mp3"
+    audio_path1 = api.get_root_path() + "/data/static/audio/曼波.mp3"
     st.audio(audio_path1)
-    audio_path2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/data/static/audio/数据结构的基本概念.mp4"
+    audio_path2 = api.get_root_path() + "/data/static/audio/数据结构的基本概念.mp4"
     st.video(audio_path2)
