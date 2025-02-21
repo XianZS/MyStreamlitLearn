@@ -1,8 +1,7 @@
 import os
 import subprocess
 import sys
-from src.server import media
-
+from src.server import main_page
 
 if __name__ == "__main__":
-    media.media_things()
+    main_page.main_page_show()
