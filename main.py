@@ -1,7 +1,8 @@
 import os
+import subprocess
 import sys
-import config
-from src.models import media
+from src.server import media
+
 
 if __name__ == "__main__":
     media.media_things()
