@@ -9,6 +9,7 @@
                2.st.slider 滑动条方法
                3.
 """
+from datetime import timedelta
 from typing import Union
 
 import streamlit as st
@@ -103,7 +104,7 @@ def __input_things() -> None:
     st.markdown("""
         ---
     """)
-    val = st.text_input("输入")
+    val = st.text_input("普通输入")
     st.write(f"你的输入为:{val}")
 
     def clear_input() -> None:
@@ -111,7 +112,7 @@ def __input_things() -> None:
             st.session_state.input_things = st.session_state.user_input_things
         st.session_state.user_input_things = ""
 
-    st.text_input("用户",
+    st.text_input("用户文本输入",
                   key="user_input_things",
                   max_chars=1000,
                   on_change=clear_input)
@@ -119,6 +120,20 @@ def __input_things() -> None:
         st.write(f"st.session_state type is {type(st.session_state)}")
         st.write(f"st.session_state things is {st.session_state}")
         st.write(f"你的输入 : {st.session_state.input_things}")
+
+    # 日期输入
+    date_input = st.date_input("日期选择输入",
+                               key="user_date_input")
+    st.write(f"st.session_state is {date_input}")
+    import datetime
+    # 时间输入
+    time_input = st.time_input("时间选择输入",
+                               # key 设置为 user_time_input
+                               key="user_time_input",
+                               # step 设置为 1 分钟
+                               step=datetime.timedelta(minutes=1),
+                               )
+    st.write(f"st.session_state is {time_input}")
 
 
 def main_page_3_show():
